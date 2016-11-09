@@ -272,6 +272,9 @@ Serial::SerialImpl::reconfigurePort ()
   if (!SetCommTimeouts(fd_, &timeouts)) {
     THROW (IOException, "Error setting timeouts.");
   }
+
+  // Setup queue size
+  SetupComm(fd_, 3200, 3200);
 }
 
 void
